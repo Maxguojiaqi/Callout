@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-10-10T19:30:37.261</Modified>
+      <Modified>2017-10-10T20:56:15.021</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\bin\x86\Debug\Callout.exe">
       <PackagePath>entrypoint\Callout.exe</PackagePath>
-      <Modified>2017-10-10T19:30:26.835</Modified>
+      <Modified>2017-10-10T20:56:08.028</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maxlo\.nuget\packages\Esri.ArcGISRuntime.UWP\100.1.0\runtimes\win10-x86\native\RuntimeCoreNet.dll">
       <PackagePath>RuntimeCoreNet.dll</PackagePath>
@@ -1180,11 +1180,11 @@
     <AppxPackagedFile Include="C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-10-10T19:30:30.254</Modified>
+      <Modified>2017-10-10T20:56:11.255</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\bin\x86\Debug\Core\Callout.exe">
       <PackagePath>Callout.exe</PackagePath>
-      <Modified>2017-10-10T19:30:37.243</Modified>
+      <Modified>2017-10-10T20:56:15.008</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

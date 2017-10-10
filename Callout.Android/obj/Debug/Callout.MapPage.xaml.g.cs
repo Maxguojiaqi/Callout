@@ -9,20 +9,18 @@
 //------------------------------------------------------------------------------
 
 namespace Callout {
-    using System;
-    using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
     
     
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\maxlo\\source\\repos\\Callout\\Callout\\Callout.Shared\\MapPage.xaml")]
     public partial class MapPage : global::Xamarin.Forms.ContentPage {
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Esri.ArcGISRuntime.Xamarin.Forms.MapView MyMapView;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Esri.ArcGISRuntime.Xamarin.Forms.MapView MyMapview;
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            this.LoadFromXaml(typeof(MapPage));
-            MyMapView = this.FindByName<global::Esri.ArcGISRuntime.Xamarin.Forms.MapView>("MyMapView");
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MapPage));
+            MyMapview = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Esri.ArcGISRuntime.Xamarin.Forms.MapView>(this, "MyMapview");
         }
     }
 }
