@@ -1,0 +1,1 @@
+C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\Callout.UWP.csproj;x86

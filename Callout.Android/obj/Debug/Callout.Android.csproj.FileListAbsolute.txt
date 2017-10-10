@@ -1,0 +1,5 @@
+C:\Users\maxlo\source\repos\Callout\Callout\Callout.Android\obj\Debug\Callout.Android.csprojResolveAssemblyReference.cache
+C:\Users\maxlo\source\repos\Callout\Callout\Callout.Android\obj\Debug\Callout.Android.csproj.CoreCompileInputs.cache
+C:\Users\maxlo\source\repos\Callout\Callout\Callout.Android\obj\Debug\Callout.MapPage.xaml.g.cs
+C:\Users\maxlo\source\repos\Callout\Callout\Callout.Android\obj\Debug\Callout.dll
+C:\Users\maxlo\source\repos\Callout\Callout\Callout.Android\obj\Debug\Callout.pdb
