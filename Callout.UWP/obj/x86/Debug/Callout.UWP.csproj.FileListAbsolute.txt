@@ -130,7 +130,6 @@ C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\bin\x86\Debug\Xamarin.Fo
 C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\bin\x86\Debug\Xamarin.Forms.Platform.UAP.dll
 C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\bin\x86\Debug\Xamarin.Forms.Platform.dll
 C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\bin\x86\Debug\Xamarin.Forms.Xaml.dll
-C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\obj\x86\Debug\Callout.UWP.csprojResolveAssemblyReference.cache
 C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\obj\x86\Debug\App.g.i.cs
 C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\obj\x86\Debug\App.g.cs
 C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\obj\x86\Debug\MainPage.g.i.cs
@@ -224,3 +223,4 @@ C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\obj\x86\Debug\Esri.ArcGI
 C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\obj\x86\Debug\RuntimeCoreNet.pri.xml
 C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\obj\x86\Debug\Xamarin.Forms.Platform.UAP.pri.xml
 C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\obj\x86\Debug\ProjectArchitectures.txt
+C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\obj\x86\Debug\Callout.UWP.csprojResolveAssemblyReference.cache

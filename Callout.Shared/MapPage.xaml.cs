@@ -64,8 +64,8 @@ namespace Callout
                 null);
 
             List<KeyValuePair<string, object>> Polygon = new List<KeyValuePair<string, object>>();
-            Polygon.Add(new KeyValuePair<string, object>("IntNotEnumerable", 678910));
-            Polygon.Add(new KeyValuePair<string, object>("name", "This is polygon"));
+            Polygon.Add(new KeyValuePair<string, object>("Number", 678910));
+            Polygon.Add(new KeyValuePair<string, object>("Type", "This is polygon"));
 
             // Create new graphic
             Graphic polygonGraphic = new Graphic(polygonGeometry, Polygon, polygonSymbol);
@@ -81,10 +81,11 @@ namespace Callout
             travelPosition.AddPoint(new MapPoint(5000000, 5000000));
             travelPosition.AddPoint(new MapPoint(2000000, 8000000));
             var travelRoute = travelPosition.ToGeometry();
-            List<KeyValuePair<string, object>> Polyline = new List<KeyValuePair<string, object>>();
-            Polyline.Add(new KeyValuePair<string, object>("IntNotEnumerable", 12345));
-            Polyline.Add(new KeyValuePair<string, object>("name", "This is polyline"));
 
+            // Create the feature string list to store in the graphics.
+            List<KeyValuePair<string, object>> Polyline = new List<KeyValuePair<string, object>>();
+            Polyline.Add(new KeyValuePair<string, object>("Number", 12345));
+            Polyline.Add(new KeyValuePair<string, object>("Type", "This is polyline"));
 
             var travelTrip = new Graphic(travelRoute, Polyline, travelPolyline);
             _polygonOverlay.Graphics.Add(travelTrip);
@@ -111,21 +112,10 @@ namespace Callout
             // Check if we got results
             if (identifyResults.Graphics.Count > 0)
             {
-                List<object> names = new List<object>();
-
-                string mapLocationDescription = string.Format("this is a piece of information");
-
-                foreach (var g in identifyResults.Graphics)
-                {
-                    object graphicsName = g.Attributes["IntNotEnumerable"];
-                    names.Add(graphicsName); 
-                }
-                string combindedString = string.Join(",", names.ToArray());
-                // Create a new callout definition using the formatted string
+                // initialize the callout, with the title "GeoNote"
                 CalloutDefinition myCalloutDefinition = new CalloutDefinition("GeoNote");
-                //CalloutStyle callout = new CalloutStyle();
-                //callout.BackgroundColor = Colors.Red;
-                myCalloutDefinition.DetailText = "Name " + combindedString;
+
+                // create a button image, with the buttonclicked action of close the callout
                 Uri uri = new Uri("https://www.edenprairienissan.com/wp-content/themes/DealerInspireDealerTheme/images/close-button.png");
                 var image = new RuntimeImage(uri);
                 myCalloutDefinition.ButtonImage = image;
@@ -138,8 +128,20 @@ namespace Callout
                     MyMapView.DismissCallout();
                 }
 
-                //// Display the callout
-                //MyMapView.ShowCalloutAt(mapLocation, myCalloutDefinition);
+                // Create the Display messge of the callout
+                List<object> names = new List<object>();
+
+                string mapLocationDescription = string.Format("this is a piece of information");
+
+                foreach (var g in identifyResults.Graphics)
+                {
+                    object graphicsName = "Data Type: "+ g.Attributes["Type"] + Environment.NewLine;
+                    object graphicsNumber ="Number: " + g.Attributes["Number"]+ Environment.NewLine;
+                    names.Add(graphicsNumber);
+                    names.Add(graphicsName); 
+                }
+                string combindedString = string.Join("", names.ToArray());
+                myCalloutDefinition.DetailText = Environment.NewLine + combindedString;
 
                 // Make sure that the UI changes are done in the UI thread
                 Device.BeginInvokeOnMainThread(async () =>
