@@ -37,18 +37,6 @@ namespace Callout.ViewModels
                 RaisePropertyChanged();
             }
         }
-
-        private MapView _mymapview;
-        public MapView MyMapView
-        {
-            get { return _mymapview; }
-            private set
-            {
-                _mymapview = value;
-                RaisePropertyChanged();
-            }
-        }
-
         private GraphicsOverlayCollection _graphicsOverlays = new GraphicsOverlayCollection();
         public GraphicsOverlayCollection GraphicsOverlays
         {
@@ -59,13 +47,8 @@ namespace Callout.ViewModels
                 RaisePropertyChanged();
             }
         }
-
-
         public MainPageViewModel()
         {
-
-            MyMapView = new MapView();
-
             Map = new Map(SpatialReference.Create(102100));
 
             // Add the tile basemap only after the map has loaded so it doesn't block the map if offline
@@ -96,15 +79,7 @@ namespace Callout.ViewModels
             Polyline.Add(new KeyValuePair<string, object>("Number", 12345));
             Polyline.Add(new KeyValuePair<string, object>("Type", "This is polyline"));
             var travelTrip = new Graphic(travelRoute, Polyline, travelPolyline);
-            GraphicsOverlays["MyGraphics"].Graphics.Add(travelTrip);
-
-
-
-
-
-
-
-
+            GraphicsOverlays["MyGraphics"].Graphics.Add(travelTrip);            
         }
     }
 }

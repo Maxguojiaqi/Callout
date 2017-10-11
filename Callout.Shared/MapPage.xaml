@@ -4,34 +4,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:esriUI="clr-namespace:Esri.ArcGISRuntime.Xamarin.Forms;assembly=Esri.ArcGISRuntime.Xamarin.Forms"
              xmlns:mapping="clr-namespace:Esri.ArcGISRuntime.Mapping;assembly=Esri.ArcGISRuntime">
+
+
     <esriUI:MapView x:Name="MyMapview"
                     GraphicsOverlays="{Binding GraphicsOverlays}"
-                    Map="{Binding Map}" >
+                    Map="{Binding Map}" />
 
-        <esriUI:MapView.Overlays>
-            <Grid x:Name="popup" 
-                          esri:MapView.ViewOverlayAnchor="{Binding Geometry}" 
-                          IsHitTestVisible="False" HorizontalAlignment="Right" VerticalAlignment="Top" MaxWidth="200">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="20" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Border Background="#CC000000" BorderThickness="1,1,1,0" Margin="0,0,0,-1" BorderBrush="White" Grid.ColumnSpan="2">
-                    <StackPanel Margin="20">
-                        <TextBlock FontWeight="Bold" Foreground="White">
-                                    <Run Text="ObjectId = "></Run>
-                                    <Run Text="{Binding Attributes[objectid]}"></Run>
-                        </TextBlock>
-                    </StackPanel>
-                </Border>
-                <Path StrokeThickness="1" Fill="#CC000000" Stroke="White" Stretch="Fill" HorizontalAlignment="Left" Data="M0,0 L0,1 1,0" Grid.Row="1" />
-                <Path StrokeThickness="1" Fill="#CC000000" Stroke="White" Stretch="Fill" VerticalAlignment="Top" Data="M0,0 L1,0" Grid.Row="1" Grid.Column="1" />
-            </Grid>
-
-        </esriUI:MapView.Overlays>
-        <esriUI:MapView/>
 </ContentPage>

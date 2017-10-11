@@ -19,94 +19,77 @@ namespace Callout
     {
         private MainPageViewModel _viewModel;
 
+        
+
         public MapPage()
         {
             BindingContext = _viewModel = new MainPageViewModel();
 
             InitializeComponent();
-
-            // Example of binding in code
-            //_mapView.SetBinding(MapView.MapProperty, nameof(_viewModel.Map));
-
+            MyMapview.GeoViewTapped += OnMapViewTapped;
         }
-
-        //public MapPage()
-        //{
-        //    InitializeComponent();
-
-        //    Title = "Identify graphics";
-
-        //    // Create the UI, setup the control references and execute initialization 
-        //    Initialize();
-        //}
 
         //private void Initialize()
         //{
-
-
         //    // Hook into tapped event
-        //    MyMapView.GeoViewTapped += OnMapViewTapped;
-
-
+        //    MyMapview.GeoViewTapped += OnMapViewTapped;
         //}
-        //#region add overlay
 
+        public async void OnMapViewTapped(object sender, Esri.ArcGISRuntime.Xamarin.Forms.GeoViewInputEventArgs e)
+        {
+            var tolerance = 10d; // Use larger tolerance for touch
+            var maximumResults = 1; // Only return one graphic  
+            var onlyReturnPopups = false; // Don't return only popups
+            MapPoint mapLocation = e.Location;
+            // Use the following method to identify graphics in a specific graphics overlay
+            IdentifyGraphicsOverlayResult identifyResults = await MyMapview.IdentifyGraphicsOverlayAsync(
+                 MyMapview.GraphicsOverlays["MyGraphics"],
+                 e.Position,
+                 tolerance,
+                 onlyReturnPopups,
+                 maximumResults);
 
-        //private async void OnMapViewTapped(object sender, Esri.ArcGISRuntime.Xamarin.Forms.GeoViewInputEventArgs e)
-        //{
-        //    var tolerance = 10d; // Use larger tolerance for touch
-        //    var maximumResults = 1; // Only return one graphic  
-        //    var onlyReturnPopups = false; // Don't return only popups
-        //    MapPoint mapLocation = e.Location;
-        //    // Use the following method to identify graphics in a specific graphics overlay
-        //    IdentifyGraphicsOverlayResult identifyResults = await MyMapView.IdentifyGraphicsOverlayAsync(
-        //         _polygonOverlay,
-        //         e.Position,
-        //         tolerance,
-        //         onlyReturnPopups,
-        //         maximumResults);
+            // Check if we got results
+            if (identifyResults.Graphics.Count > 0)
+            {
+                // initialize the callout, with the title "GeoNote"
+                CalloutDefinition myCalloutDefinition = new CalloutDefinition("GeoNote");
 
-            //// Check if we got results
-            //if (identifyResults.Graphics.Count > 0)
-            //{
-            //    // initialize the callout, with the title "GeoNote"
-            //    CalloutDefinition myCalloutDefinition = new CalloutDefinition("GeoNote");
+                // create a button image, with the buttonclicked action of close the callout
+                Uri uri = new Uri("https://www.us.elsevierhealth.com/skin/frontend/enterprise-zurb/themeus/images/close-button.png");
+                var image = new RuntimeImage(uri);
+                myCalloutDefinition.ButtonImage = image;
 
-            //    // create a button image, with the buttonclicked action of close the callout
-            //    Uri uri = new Uri("https://www.edenprairienissan.com/wp-content/themes/DealerInspireDealerTheme/images/close-button.png");
-            //    var image = new RuntimeImage(uri);
-            //    myCalloutDefinition.ButtonImage = image;
+                myCalloutDefinition.OnButtonClick = CloseCallout;
+                Action<object> ClosePop = CloseCallout;
 
-            //    myCalloutDefinition.OnButtonClick = CloseCallout;
-            //    Action<object> ClosePop = CloseCallout;
+                void CloseCallout(object i)
+                {
+                    MyMapview.DismissCallout();
+                }
 
-            //    void CloseCallout(object i)
-            //    {
-            //        MyMapView.DismissCallout();
-            //    }
+                // Create the Display messge of the callout
+                List<object> names = new List<object>();
 
-            //    // Create the Display messge of the callout
-            //    List<object> names = new List<object>();
+                string mapLocationDescription = string.Format("this is a piece of information");
 
-            //    string mapLocationDescription = string.Format("this is a piece of information");
+                foreach (var g in identifyResults.Graphics)
+                {
+                    object graphicsName = "Data Type: " + g.Attributes["Type"] + Environment.NewLine;
+                    object graphicsNumber = "Number: " + g.Attributes["Number"] + Environment.NewLine;
+                    names.Add(graphicsNumber);
+                    names.Add(graphicsName);
+                }
+                string combindedString = string.Join("", names.ToArray());
+                myCalloutDefinition.DetailText = "_________________________"+Environment.NewLine + combindedString;
 
-            //    foreach (var g in identifyResults.Graphics)
-            //    {
-            //        object graphicsName = "Data Type: "+ g.Attributes["Type"] + Environment.NewLine;
-            //        object graphicsNumber ="Number: " + g.Attributes["Number"]+ Environment.NewLine;
-            //        names.Add(graphicsNumber);
-            //        names.Add(graphicsName); 
-            //    }
-            //    string combindedString = string.Join("", names.ToArray());
-            //    myCalloutDefinition.DetailText = Environment.NewLine + combindedString;
-
-            //    // Make sure that the UI changes are done in the UI thread
-            //    Device.BeginInvokeOnMainThread(async () =>
-            //    {
-            //        // Display the callout
-            //        MyMapView.ShowCalloutAt(mapLocation, myCalloutDefinition);
-            //    });
-            //}
-        
+                // Make sure that the UI changes are done in the UI thread
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    // Display the callout
+                    MyMapview.ShowCalloutAt(mapLocation, myCalloutDefinition);
+                });
+            }
+        }
     }
 }

@@ -424,6 +424,9 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\maxlo\source\repos\Callout\Callout\Callout.Shared\closebutton.png">
+      <PackagePath>closebutton.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maxlo\source\repos\Callout\Callout\Callout.UWP\bin\x86\Debug\Callout.xr.xml">
       <PackagePath>Callout.xr.xml</PackagePath>
     </AppxPackagedFile>
